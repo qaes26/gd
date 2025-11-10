@@ -12,16 +12,15 @@
       --stroke: rgba(15, 23, 42, 0.06);
       --text: #0f172a;
       --muted: #4b5563;
-      --accent: #e11d48; /* وردي */
-      --accent-soft: rgba(225, 29, 72, .1);
-      --accent2: #0f766e; /* أخضر مزرق */
+      --accent: #e11d48;
+      --accent2: #0f766e;
       --radius: 20px;
     }
     *{box-sizing:border-box;}
     body{
       margin:0;
       font-family:"Tahoma","Segoe UI",system-ui,sans-serif;
-      background: radial-gradient(circle at top, rgba(225,29,72,0.08), transparent 45%), var(--bg);
+      background: radial-gradient(circle at top, rgba(225,29,72,0.055), transparent 40%), var(--bg);
       color:var(--text);
       line-height:1.8;
     }
@@ -42,7 +41,7 @@
     }
     .brand{
       display:flex; align-items:center; gap:.5rem;
-      font-weight:700; letter-spacing:.02em;
+      font-weight:700;
       color:#0f172a;
     }
     .brand-dot{
@@ -132,7 +131,7 @@
       border:1px solid var(--stroke);
       border-radius:var(--radius);
       padding:1rem 1.1rem 1.1rem;
-      transition:.25s;
+      transition:.2s;
     }
     .card:hover{
       border-color:rgba(225,29,72,.25);
@@ -141,10 +140,9 @@
     }
     .card h3{margin:.1rem 0 .4rem; font-size:1.02rem;}
     .card p{color:var(--muted); font-size:.9rem;}
-    .example{
+    .example-text{
       margin-top:.6rem;
-      background:var(--accent-soft);
-      border:1px solid rgba(225,29,72,.08);
+      background:rgba(225,29,72,.08);
       border-radius:16px;
       padding:.55rem .75rem .7rem;
       font-size:.8rem;
@@ -161,9 +159,22 @@
       .two-col{grid-template-columns:1fr;}
     }
 
-    /* الحركات: افتراضياً كل شيء ظاهر */
+    /* بطاقات الأمثلة المصوّرة */
+    .example-img-card{
+      background:var(--surface);
+      border:1px solid rgba(15,23,42,.03);
+      border-radius:18px;
+      box-shadow:0 14px 30px rgba(15,23,42,.03);
+      overflow:hidden;
+    }
+    .example-img-card .body{
+      padding:.6rem 1rem 1rem;
+    }
+    .example-img-card h3{margin:.25rem 0 .4rem; font-size:1rem;}
+    .example-img-card p{margin:0; color:var(--muted); font-size:.82rem;}
+
+    /* animations */
     .reveal{opacity:1; transform:none;}
-    /* إذا اشتغل JS */
     body.js .reveal{opacity:0; transform:translateY(16px);}
     body.js .reveal.in{
       opacity:1; transform:none;
@@ -180,7 +191,6 @@
       line-height:1.5;
     }
     .muted{color:var(--muted); font-size:.8rem}
-
   </style>
 </head>
 <body>
@@ -194,7 +204,8 @@
         <a href="#whatis">ما هي؟</a>
         <a href="#why">الأهمية</a>
         <a href="#types">الأنواع</a>
-        <a href="#uses">الاستخدامات</a>
+        <a href="#uses">الاستعمالات</a>
+        <a href="#examples">الأمثلة المصوّرة</a>
         <a href="#rules">إرشادات</a>
       </div>
     </nav>
@@ -205,18 +216,18 @@
       <span class="badge">تصميم جرافيكي • تجربة مستخدم</span>
       <h1 class="reveal">المساحة البيضاء (White Space) في التصميم</h1>
       <p class="lead reveal" style="--d:100ms">
-        المساحة البيضاء ليست حشوة فارغة، بل أداة تنظيم، وتركيز، وراحة. من خلالها نمنع الضوضاء البصرية، ونوجّه عين المشاهد للعنصر الأهم، ونظهر التصميم كأنه أغلى وأكثر احترافية.
+        المساحة البيضاء هي الفراغ المقصود اللي نخليه حول العناصر عشان نوضّح، ونرتّب، ونخلّي الصفحة راقية. مش فراغ عشوائي.
       </p>
     </div>
     <div class="hero-card reveal" style="--d:160ms">
-      <h2>مكوّنات هذا العرض</h2>
-      <p class="muted" style="margin-bottom:.5rem;">سنمرّ على المفهوم، الفوائد، الأنواع، الأمثلة، ثم الأخطاء.</p>
+      <h2>محتويات الصفحة</h2>
+      <p class="muted" style="margin-bottom:.4rem;">تعريف • فوائد • أنواع • أمثلة مصوّرة متنوعة • أخطاء</p>
       <div class="chip-row">
-        <span class="chip">تعريف + فكرة خاطئة</span>
-        <span class="chip">فوائد عملية</span>
-        <span class="chip">Macro / Micro</span>
-        <span class="chip">استخدامات متقدمة</span>
-        <span class="chip">أخطاء يجب تجنّبها</span>
+        <span class="chip">تعريف</span>
+        <span class="chip">UI</span>
+        <span class="chip">متاجر</span>
+        <span class="chip">بريد</span>
+        <span class="chip">تطبيق</span>
       </div>
     </div>
   </div>
@@ -227,166 +238,244 @@
       <h2 class="section-title"><span class="dot"></span> الشريحة 1: ما هي المساحة البيضاء؟</h2>
       <div class="two-col">
         <div class="card reveal" style="--d:40ms">
-          <h3>تعريف مبسّط</h3>
-          <p>
-            هي المساحة الفارغة (وليست شرطًا أن تكون بيضاء اللون) المحيطة بالعناصر أو الموجودة بينها، مثل الفراغ بين الفقرات، وبين صورة ونص، أو حتى بين أقسام الصفحة.
-          </p>
-          <div class="example">
-            مثال: صفحة فيها عنوان كبير ثم فراغ واضح ثم فقرة → عين القارئ تلتقط العنوان أولًا بدون إزعاج.
-          </div>
+          <h3>تعريف</h3>
+          <p>هي المساحة الخالية من العناصر، لكنها متعمدة، نخليها بين النصوص والصور والأقسام، حتى لو كان لونها مو أبيض.</p>
+          <div class="example-text">مثال: عنوان كبير، بعده فراغ، بعده صورة. الفراغ يخلّي الترتيب واضح.</div>
         </div>
         <div class="card reveal" style="--d:120ms">
-          <h3>فكرة خاطئة شائعة</h3>
-          <p>
-            البعض يظن أن المساحة البيضاء تعني أن المصمم “لم يكمل الصفحة”. الحقيقة أنها عنصر تصميم متعمّد، مثله مثل الألوان والخطوط.
-          </p>
-          <p class="example">مثال: إعلانات Apple أو مواقع الشركات الكبيرة → عناصر قليلة، فراغ كثير، لكن الإحساس راقٍ.</p>
-        </div>
-      </div>
-      <div class="grid" style="margin-top:1rem;">
-        <div class="card reveal" style="--d:200ms">
-          <h3>لماذا لونها ليس مهمًا؟</h3>
-          <p>يمكن أن تكون بلون رمادي فاتح، أو حتى لون خلفية ملوّنة، المهم أنها منطقة خالية من عناصر مزاحمة.</p>
-        </div>
-        <div class="card reveal" style="--d:260ms">
-          <h3>وظيفتها الأساسية</h3>
-          <p>خلق إيقاع بصري: عنصر → فراغ → عنصر. هذا الإيقاع هو الذي يجعل العين تتحرك بارتياح.</p>
+          <h3>ليش الكل يستخدمها؟</h3>
+          <p>لأنها تعطي إحساس احترافي وتخلّي المستخدم يركّز على الشيء المهم بدل ما يتشتت.</p>
         </div>
       </div>
     </section>
 
     <!-- الشريحة 2 -->
     <section id="why">
-      <h2 class="section-title"><span class="dot"></span> الشريحة 2: لماذا المساحة البيضاء مهمة؟</h2>
+      <h2 class="section-title"><span class="dot"></span> الشريحة 2: الأهمية</h2>
       <div class="grid">
         <div class="card reveal" style="--d:40ms">
-          <h3>1. تحسين القراءة والفهم</h3>
-          <p>الفقرات المتلاصقة ترهق القارئ. بإضافة هوامش ومسافات سطر جيدة، يمكن رفع الاستيعاب بنسبة كبيرة حسب دراسات الـ UX.</p>
+          <h3>1. تحسين القراءة</h3>
+          <p>المسافات بين الأسطر والفقرات ترفع الفهم.</p>
         </div>
         <div class="card reveal" style="--d:100ms">
           <h3>2. توجيه الانتباه</h3>
-          <p>العين تنجذب للشيء الوحيد المحاط بفراغ. لذلك نضع العنوان أو زر call-to-action داخل مساحة هواء نظيفة.</p>
-          <div class="example">مثال: زر “قدّم الآن” في صفحة تسجيل تخصص جامعي.</div>
+          <p>العين تروح للعنصر الوحيد المحاط بفراغ.</p>
         </div>
         <div class="card reveal" style="--d:160ms">
-          <h3>3. خلق تسلسل هرمي</h3>
-          <p>الفراغ بين الأقسام يقول للمستخدم: “هذا جزء جديد”. بدون هذا الفراغ، تبدو الصفحة كتلة نص واحدة مزعجة.</p>
+          <h3>3. خلق تسلسل</h3>
+          <p>نقدر نقول للمستخدم “هذا قسم جديد” بدون ما نكتبها، بس بالفراغ.</p>
         </div>
         <div class="card reveal" style="--d:220ms">
-          <h3>4. إظهار الاحترافية</h3>
-          <p>التصاميم الفاخرة تعتمد أسلوب “كل شيء يتنفس”. كثرة العناصر تعطي إحساس رخيص ومزدحم.</p>
-        </div>
-        <div class="card reveal" style="--d:280ms">
-          <h3>5. سهولة التفاعل</h3>
-          <p>المساحة حول الأزرار والحقول تمنع الضغط الخاطئ وتخلّي التجربة مريحة على الجوال.</p>
-        </div>
-        <div class="card reveal" style="--d:340ms">
-          <h3>6. تقليل العبء المعرفي</h3>
-          <p>كلما قلّت العناصر، قلّ عدد القرارات التي يحتاج المستخدم لاتّخاذها، وبالتالي يكمل الصفحة للنهاية.</p>
+          <h3>4. إحساس بالفخامة</h3>
+          <p>البراندات الكبيرة تحب التصاميم اللي فيها هواء.</p>
         </div>
       </div>
     </section>
 
     <!-- الشريحة 3 -->
     <section id="types">
-      <h2 class="section-title"><span class="dot"></span> الشريحة 3: أنواع المساحة البيضاء</h2>
+      <h2 class="section-title"><span class="dot"></span> الشريحة 3: الأنواع</h2>
       <div class="grid">
         <div class="card reveal" style="--d:40ms">
-          <h3>1) المساحة البيضاء الكلية (Macro)</h3>
-          <p>
-            هي المساحات الكبيرة بين مناطق التصميم الرئيسية: بين الهيدر والمحتوى، بين البطاقة والأخرى، بين أقسام الصفحة.
-          </p>
-          <div class="example">تُستخدم في الصفحات الطويلة لخلق “مقاطع” سهلة القراءة.</div>
+          <h3>المساحة البيضاء الكلية (Macro)</h3>
+          <p>الفراغات الكبيرة بين أجزاء الصفحة.</p>
         </div>
-        <div class="card reveal" style="--d:120ms">
-          <h3>2) المساحة البيضاء الدقيقة (Micro)</h3>
-          <p>هي المسافات الصغيرة جداً: بين السطر والسطر، بين الأيقونة والنص، بين عنوان وفقرة.</p>
-          <div class="example">تظهر أهميتها في تصميم تطبيقات الجوال والبطاقات الصغيرة.</div>
+        <div class="card reveal" style="--d:100ms">
+          <h3>المساحة البيضاء الدقيقة (Micro)</h3>
+          <p>الفراغات الصغيرة داخل العنصر الواحد.</p>
         </div>
-        <div class="card reveal" style="--d:200ms">
-          <h3>مساحة خارجية vs داخلية</h3>
-          <p>
-            الخارجية: حول العنصر من الخارج.  
-            الداخلية: داخل العنصر نفسه كالمسافة داخل البطاقة.
-          </p>
-        </div>
-        <div class="card reveal" style="--d:260ms">
-          <h3>توزيع متوازن</h3>
-          <p>المشكلة ليست في “كمية” الفراغ فقط، بل في انتظامه. الفراغ غير المنتظم يجعل التصميم فوضوي.</p>
+        <div class="card reveal" style="--d:160ms">
+          <h3>داخلية وخارجية</h3>
+          <p>داخلية (padding) وخارجية (margin) وكل وحدة لها دور.</p>
         </div>
       </div>
     </section>
 
     <!-- الشريحة 4 -->
     <section id="uses">
-      <h2 class="section-title"><span class="dot"></span> الشريحة 4: استخدامات عملية للمساحة البيضاء</h2>
+      <h2 class="section-title"><span class="dot"></span> الشريحة 4: الاستعمالات</h2>
       <div class="grid">
         <div class="card reveal" style="--d:40ms">
-          <h3>1. تصميم الويب</h3>
-          <p>لفصل أقسام “الخدمات – الأعمال – تواصل معنا” بدل ما تكون كلها فوق بعض.</p>
+          <h3>مواقع الويب</h3>
+          <p>تقسيم الصفحة + ترك هوامش يمين ويسار.</p>
         </div>
         <div class="card reveal" style="--d:100ms">
-          <h3>2. المتاجر الإلكترونية</h3>
-          <p>إبراز المنتج الرئيسي، وسعره، وزر الشراء. فراغ حول المنتج = تركيز أعلى.</p>
+          <h3>المتاجر الإلكترونية</h3>
+          <p>إبراز المنتج الأساسي بفراغ حوله.</p>
         </div>
         <div class="card reveal" style="--d:160ms">
-          <h3>3. تصميم الهوية</h3>
-          <p>الشعارات القوية غالبًا حولها فراغ محسوب، عشان ما يتعارض أي عنصر مع شكل الشعار.</p>
-        </div>
-        <div class="card reveal" style="--d:220ms">
-          <h3>4. البوستات التعليمية</h3>
-          <p>بدل ما تحط 6 جمل في مربع واحد، وزّعها على كتل مع فراغ، فيصير المحتوى مقروء.</p>
-        </div>
-        <div class="card reveal" style="--d:280ms">
-          <h3>5. البريد الإلكتروني</h3>
-          <p>لجعل زر الـ CTA واضحًا، وخاصة في الرسائل التسويقية أو رسائل الجامعات.</p>
-        </div>
-        <div class="card reveal" style="--d:340ms">
-          <h3>6. الـ UI/UX</h3>
-          <p>الفراغ عنصر من عناصر الـ spacing system (مثل 4px, 8px, 12px...) داخل التصميم.</p>
+          <h3>التطبيقات</h3>
+          <p>تباعد الأزرار والحقول عشان المستخدم ما يغلط.</p>
         </div>
       </div>
     </section>
 
-    <!-- الشريحة 5: إرشادات وأخطاء -->
+    <!-- الأمثلة المصوّرة -->
+    <section id="examples">
+      <h2 class="section-title"><span class="dot"></span> الأمثلة المصوّرة (متنوعة)</h2>
+      <p class="muted" style="margin-bottom:1rem;">كل مثال هنا بشكل مختلف عشان يوضح إن المساحة البيضاء تستخدم في أكثر من نوع تصميم.</p>
+      <div class="grid">
+        <!-- مثال 1: مقارنة هواتف -->
+        <div class="example-img-card reveal" style="--d:40ms">
+          <svg viewBox="0 0 900 300" width="100%" height="200" xmlns="http://www.w3.org/2000/svg">
+            <rect width="900" height="300" fill="#ffffff"/>
+            <rect x="50" y="20" width="800" height="40" rx="10" fill="#edf2ff"/>
+            <text x="450" y="47" text-anchor="middle" font-family="Tahoma" font-size="16" fill="#0f172a">مثال 1 - صفحة مقارنة هواتف (فراغ أعلى + بين الكروت)</text>
+            <!-- 3 كروت -->
+            <rect x="60" y="90" width="230" height="180" rx="16" fill="#fff" stroke="#e5e7eb"/>
+            <rect x="100" y="110" width="150" height="95" rx="14" fill="#e2e8f0"/>
+            <text x="175" y="225" text-anchor="middle" font-family="Tahoma" font-size="12">iPhone 15</text>
+
+            <rect x="335" y="90" width="230" height="180" rx="16" fill="#fff" stroke="#e5e7eb"/>
+            <rect x="375" y="110" width="150" height="95" rx="14" fill="#e2e8f0"/>
+            <text x="450" y="225" text-anchor="middle" font-family="Tahoma" font-size="12">iPhone 15 Pro</text>
+
+            <rect x="610" y="90" width="230" height="180" rx="16" fill="#fff" stroke="#e5e7eb"/>
+            <rect x="650" y="110" width="150" height="95" rx="14" fill="#e2e8f0"/>
+            <text x="725" y="225" text-anchor="middle" font-family="Tahoma" font-size="12">iPhone 15 Plus</text>
+          </svg>
+          <div class="body">
+            <h3>مثال 1: زي مثالك</h3>
+            <p>هذا الشكل قريب من اللي أرسلتيه: كروت متباعدة مع هواء حولها.</p>
+          </div>
+        </div>
+
+        <!-- مثال 2: متجر لكن مع عنوان جانبي -->
+        <div class="example-img-card reveal" style="--d:120ms">
+          <svg viewBox="0 0 900 300" width="100%" height="200" xmlns="http://www.w3.org/2000/svg">
+            <rect width="900" height="300" fill="#ffffff"/>
+            <text x="110" y="45" font-family="Tahoma" font-size="16" fill="#0f172a">مثال 2 - متجر إلكتروني بفراغات</text>
+            <!-- عمود فلاتر -->
+            <rect x="40" y="70" width="160" height="190" rx="14" fill="#f3f4f6"/>
+            <rect x="55" y="90" width="130" height="18" rx="6" fill="#ffffff"/>
+            <rect x="55" y="120" width="90" height="10" rx="4" fill="#e5e7eb"/>
+            <rect x="55" y="150" width="90" height="10" rx="4" fill="#e5e7eb"/>
+
+            <!-- 3 منتجات -->
+            <rect x="230" y="70" width="180" height="190" rx="14" fill="#fff" stroke="#e5e7eb"/>
+            <rect x="250" y="90" width="140" height="95" rx="12" fill="#e2e8f0"/>
+
+            <rect x="430" y="70" width="180" height="190" rx="14" fill="#fff" stroke="#e5e7eb"/>
+            <rect x="450" y="90" width="140" height="95" rx="12" fill="#e2e8f0"/>
+
+            <rect x="630" y="70" width="180" height="190" rx="14" fill="#fff" stroke="#e5e7eb"/>
+            <rect x="650" y="90" width="140" height="95" rx="12" fill="#e2e8f0"/>
+          </svg>
+          <div class="body">
+            <h3>مثال 2: متجر + فلاتر</h3>
+            <p>تلاحظي إن في فراغ بين عمود الفلاتر وبطاقات المنتجات → هذا فراغ وظيفي.</p>
+          </div>
+        </div>
+
+        <!-- مثال 3: هيرو (عنوان + صورة) -->
+        <div class="example-img-card reveal" style="--d:200ms">
+          <svg viewBox="0 0 900 300" width="100%" height="200" xmlns="http://www.w3.org/2000/svg">
+            <rect width="900" height="300" fill="#ffffff"/>
+            <!-- نص -->
+            <text x="620" y="80" font-family="Tahoma" font-size="20" fill="#0f172a">مثال 3 - قسم تعريفي بهواء</text>
+            <rect x="550" y="105" width="240" height="16" rx="8" fill="#e5e7eb"/>
+            <rect x="550" y="130" width="210" height="12" rx="6" fill="#e5e7eb"/>
+            <rect x="550" y="155" width="180" height="12" rx="6" fill="#e5e7eb"/>
+            <rect x="550" y="190" width="110" height="34" rx="10" fill="#e11d48"/>
+            <!-- صورة جانبية -->
+            <rect x="90" y="50" width="340" height="200" rx="26" fill="#e2e8f0"/>
+            <text x="260" y="165" text-anchor="middle" font-family="Tahoma" font-size="13" fill="#4b5563">منطقة صورة بهوامش كبيرة</text>
+          </svg>
+          <div class="body">
+            <h3>مثال 3: هيرو (Landing)</h3>
+            <p>نص في جهة وصورة في جهة، وبينهم فراغ واسع → هذا يخلّي العنصرين واضحين.</p>
+          </div>
+        </div>
+
+        <!-- مثال 4: واجهة تطبيق -->
+        <div class="example-img-card reveal" style="--d:280ms">
+          <svg viewBox="0 0 900 300" width="100%" height="200" xmlns="http://www.w3.org/2000/svg">
+            <rect width="900" height="300" fill="#ffffff"/>
+            <text x="450" y="35" text-anchor="middle" font-family="Tahoma" font-size="16" fill="#0f172a">مثال 4 - واجهة تطبيق ببطاقات متنفسة</text>
+            <rect x="320" y="55" width="260" height="220" rx="22" fill="#f3f4f6" stroke="#e5e7eb"/>
+            <!-- بطاقتين فوق -->
+            <rect x="340" y="80" width="100" height="60" rx="12" fill="#ffffff"/>
+            <rect x="460" y="80" width="100" height="60" rx="12" fill="#ffffff"/>
+            <!-- بطاقتين تحت -->
+            <rect x="340" y="155" width="100" height="60" rx="12" fill="#ffffff"/>
+            <rect x="460" y="155" width="100" height="60" rx="12" fill="#ffffff"/>
+            <!-- زر -->
+            <rect x="365" y="225" width="170" height="30" rx="10" fill="#e11d48"/>
+            <text x="450" y="245" text-anchor="middle" font-family="Tahoma" font-size="11" fill="#ffffff">إجراء واضح</text>
+          </svg>
+          <div class="body">
+            <h3>مثال 4: تطبيق</h3>
+            <p>البطاقات مو ملزّقة ببعض، وكل وحدة حوالينها مساحة → هذا هو المايكرو وايت سبيس.</p>
+          </div>
+        </div>
+
+        <!-- مثال 5: بريد إلكتروني -->
+        <div class="example-img-card reveal" style="--d:360ms">
+          <svg viewBox="0 0 900 300" width="100%" height="200" xmlns="http://www.w3.org/2000/svg">
+            <rect width="900" height="300" fill="#ffffff"/>
+            <text x="450" y="35" text-anchor="middle" font-family="Tahoma" font-size="16" fill="#0f172a">مثال 5 - رسالة بريد بتباعد</text>
+            <rect x="180" y="60" width="540" height="180" rx="18" fill="#f8fafc" stroke="#e2e8f0"/>
+            <rect x="210" y="90" width="210" height="14" rx="7" fill="#e5e7eb"/>
+            <rect x="210" y="115" width="390" height="10" rx="5" fill="#e5e7eb"/>
+            <rect x="210" y="135" width="360" height="10" rx="5" fill="#e5e7eb"/>
+            <rect x="210" y="170" width="120" height="30" rx="8" fill="#0f766e"/>
+          </svg>
+          <div class="body">
+            <h3>مثال 5: بريد إلكتروني</h3>
+            <p>الفراغ حول البوكس والبدي يخلّي الزر واضح جدًا.</p>
+          </div>
+        </div>
+
+        <!-- مثال 6: تسعير -->
+        <div class="example-img-card reveal" style="--d:440ms">
+          <svg viewBox="0 0 900 300" width="100%" height="200" xmlns="http://www.w3.org/2000/svg">
+            <rect width="900" height="300" fill="#ffffff"/>
+            <text x="450" y="35" text-anchor="middle" font-family="Tahoma" font-size="16" fill="#0f172a">مثال 6 - جدول أسعار بفراغ متساوي</text>
+            <rect x="70" y="70" width="220" height="190" rx="16" fill="#ffffff" stroke="#e5e7eb"/>
+            <rect x="340" y="50" width="220" height="210" rx="16" fill="#ffffff" stroke="#e11d48" stroke-width="1.5"/>
+            <rect x="610" y="70" width="220" height="190" rx="16" fill="#ffffff" stroke="#e5e7eb"/>
+            <text x="180" y="115" text-anchor="middle" font-family="Tahoma" font-size="12">الخطة الأساسية</text>
+            <text x="450" y="95" text-anchor="middle" font-family="Tahoma" font-size="12" fill="#e11d48">الخطة المميزة</text>
+            <text x="720" y="115" text-anchor="middle" font-family="Tahoma" font-size="12">الخطة المتقدمة</text>
+          </svg>
+          <div class="body">
+            <h3>مثال 6: تسعير</h3>
+            <p>حتى الجداول تحتاج مسافة متساوية بينها عشان ما تبين مكتظة.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- الإرشادات -->
     <section id="rules">
-      <h2 class="section-title"><span class="dot"></span> الشريحة 5: إرشادات وأخطاء شائعة</h2>
+      <h2 class="section-title"><span class="dot"></span> إرشادات وأخطاء شائعة</h2>
       <div class="grid">
         <div class="card reveal" style="--d:40ms">
-          <h3>إرشادات سريعة</h3>
+          <h3>إرشادات</h3>
           <ul style="margin:0; padding-right:1.2rem; color:var(--muted); font-size:.9rem;">
-            <li>استخدم نظام مسافات ثابت (8px أو 10px) ولا تغيّره كل مرة.</li>
-            <li>اترك مسافات أكبر حول العناوين الرئيسية من الفقرات العادية.</li>
-            <li>اترك مساحة حول العناصر القابلة للضغط على الجوال.</li>
+            <li>اشتغل بنظام مسافات ثابت.</li>
+            <li>اترك هوامش أكبر حول العناصر المهمة.</li>
+            <li>قلل عدد العناصر في الصف الواحد.</li>
           </ul>
         </div>
         <div class="card reveal" style="--d:120ms">
-          <h3>أخطاء يجب تجنّبها</h3>
-          <p>
-            • ملء الصفحة بالكامل بعناصر  
-            • وضع عناصر كثيرة في نفس الصف  
-            • عدم ترك مسافة بين النص والحواف
-          </p>
-        </div>
-        <div class="card reveal" style="--d:200ms">
-          <h3>كيف أعرف أن الفراغ مناسب؟</h3>
-          <p>جرّب تشيل الفراغ في نسخة ثانية من التصميم. لو صار مزدحم وغير مريح → الفراغ كان مهم.</p>
+          <h3>أخطاء</h3>
+          <p>نصوص ملزّقة، أزرار قريبة جدًا، أو أقسام بلا هواء → هذا ضد المساحة البيضاء.</p>
         </div>
       </div>
     </section>
 
-    <!-- المرجع + الأسماء -->
+    <!-- التذييل -->
     <section class="footer reveal" style="--d:40ms">
       <div><strong>المرجع:</strong> كتاب "أساسيات التصميم الجرافيكي".</div>
       <div><strong>اسم الدكتورة:</strong> إكرام</div>
       <div><strong>اسم الطالبة:</strong> سلمى بني عيسى</div>
       <div><strong>التخصص:</strong> جرافيك ديزاين</div>
-      <div class="muted" style="margin-top:.5rem;">تم إعداد هذا العرض لتوضيح مفهوم المساحة البيضاء (White Space) في التصميم من الناحية النظرية والتطبيقية.</div>
+      <div class="muted" style="margin-top:.5rem;">تم إعداد هذا العرض لشرح المساحة البيضاء مع أمثلة رسومية متنوعة (منتج، متجر، هيرو، تطبيق، بريد، تسعير).</div>
     </section>
   </main>
 
   <script>
-    // تفعيل الأنيميشن فقط لو الجافاسكربت شغّال
     document.body.classList.add('js');
     const io = new IntersectionObserver((entries)=>{
       entries.forEach(e=>{
