@@ -6,137 +6,181 @@
   <title>المساحة البيضاء (White Space) في التصميم</title>
   <style>
     :root{
-      /* لوحة ألوان محسّنة */
-      --bg-start:#0b1020;
-      --bg-end:#0a0c14;
-      --card: rgba(18, 24, 38, .55);
-      --stroke: rgba(148, 163, 184, .14);
-      --text:#e6ecff;
-      --muted:#a7b1c7;
-      --accent:#8b5cf6;   /* بنفسجي */
-      --accent2:#22d3ee;  /* سماوي */
-      --radius:22px;
+      --bg: #f3f4f6;
+      --surface: #ffffff;
+      --surface-soft: #f9fafb;
+      --stroke: rgba(15, 23, 42, 0.06);
+      --text: #0f172a;
+      --muted: #4b5563;
+      --accent: #e11d48; /* وردي */
+      --accent-soft: rgba(225, 29, 72, .1);
+      --accent2: #0f766e; /* أخضر مزرق */
+      --radius: 20px;
     }
-    *{box-sizing:border-box}
-    html,body{margin:0; padding:0}
+    *{box-sizing:border-box;}
     body{
+      margin:0;
       font-family:"Tahoma","Segoe UI",system-ui,sans-serif;
+      background: radial-gradient(circle at top, rgba(225,29,72,0.08), transparent 45%), var(--bg);
       color:var(--text);
-      background:
-        radial-gradient(1200px 600px at 80% -10%, #111827 0%, transparent 60%),
-        radial-gradient(900px 450px at 10% 10%, rgba(34,211,238,.12) 0%, transparent 65%),
-        linear-gradient(180deg, var(--bg-start), var(--bg-end));
-      line-height:1.85;
-      overflow-x:hidden;
+      line-height:1.8;
     }
-
-    /* شريط علوي */
     header{
       position:sticky; top:0; z-index:10;
+      background:rgba(243,244,246,.8);
       backdrop-filter: blur(14px);
-      background:rgba(7,10,18,.45);
-      border-bottom:1px solid var(--stroke);
+      border-bottom:1px solid rgba(15,23,42,.03);
     }
-    nav{max-width:1100px; margin:auto; display:flex; align-items:center; justify-content:space-between; gap:1rem; padding:.8rem 1rem}
-    .brand{display:flex; align-items:center; gap:.6rem; font-weight:700; letter-spacing:.02em}
+    nav{
+      max-width:1180px;
+      margin:auto;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:1rem;
+      padding:.7rem 1rem;
+    }
+    .brand{
+      display:flex; align-items:center; gap:.5rem;
+      font-weight:700; letter-spacing:.02em;
+      color:#0f172a;
+    }
     .brand-dot{
-      width:10px; height:10px; border-radius:999px;
-      background: conic-gradient(from 0deg, var(--accent), var(--accent2));
-      box-shadow:0 0 18px rgba(139,92,246,.6);
-      animation: glow 3.5s ease-in-out infinite;
+      width:12px; height:12px; border-radius:999px;
+      background:radial-gradient(circle, #e11d48 0%, #f97316 60%);
+      box-shadow:0 0 14px rgba(225,29,72,.7);
     }
-    @keyframes glow{
-      0%,100%{filter:drop-shadow(0 0 6px rgba(139,92,246,.6))}
-      50%{filter:drop-shadow(0 0 14px rgba(34,211,238,.6))}
+    .nav a{
+      text-decoration:none;
+      color:#475569;
+      margin-left:1rem;
+      font-size:.9rem;
+      transition:.2s;
     }
-    .nav a{color:var(--muted); text-decoration:none; margin-left:1rem; font-size:.9rem}
-    .nav a:hover{color:#fff}
+    .nav a:hover{color:#0f172a;}
+    @media(max-width:820px){ .nav{display:none;} }
 
-    /* البطل */
-    .hero{max-width:1100px; margin:2.5rem auto 1.5rem; padding:0 1rem; display:grid; grid-template-columns: 1.1fr .9fr; gap:2rem; align-items:center}
+    .hero{
+      max-width:1180px;
+      margin:2.4rem auto 1.4rem;
+      padding:0 1rem;
+      display:grid;
+      grid-template-columns:1.05fr .95fr;
+      gap:1.6rem;
+      align-items:center;
+    }
     .badge{
-      display:inline-block; font-size:.78rem; padding:.4rem .9rem; border-radius:999px;
-      border:1px solid rgba(139,92,246,.45);
-      background:linear-gradient(90deg, rgba(139,92,246,.14), rgba(34,211,238,.14));
+      display:inline-block;
+      background:rgba(15,118,110,.1);
+      border:1px solid rgba(15,118,110,.15);
+      color:#0f766e;
+      padding:.35rem .85rem;
+      border-radius:999px;
+      font-size:.75rem;
+      margin-bottom:.5rem;
     }
-    h1{font-size:clamp(2.1rem, 3.3vw, 3.2rem); margin:.4rem 0}
-    .lead{color:var(--muted); max-width:560px}
+    h1{
+      font-size:clamp(2rem, 3.2vw, 3rem);
+      margin:.3rem 0 .6rem;
+    }
+    .lead{
+      color:var(--muted);
+      max-width:540px;
+    }
     .hero-card{
-      border:1px solid var(--stroke); border-radius:28px; padding:1.4rem;
-      background:linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.01));
-      box-shadow:0 22px 50px rgba(0,0,0,.28);
+      background:var(--surface);
+      border:1px solid rgba(15,23,42,.03);
+      border-radius:24px;
+      padding:1.3rem 1.2rem 1.4rem;
+      box-shadow:0 16px 34px rgba(15,23,42,.06);
     }
-    .chips{display:flex; flex-wrap:wrap; gap:.5rem; margin-top:.9rem}
+    .hero-card h2{margin:.3rem 0 .4rem; font-size:1rem;}
+    .chip-row{display:flex; flex-wrap:wrap; gap:.5rem; margin-top:.7rem;}
     .chip{
-      font-size:.75rem; color:var(--muted); border:1px solid var(--stroke);
-      padding:.34rem .8rem; border-radius:999px; background:rgba(13,16,26,.6)
+      background:rgba(241,245,249,.6);
+      border-radius:999px;
+      padding:.28rem .75rem;
+      font-size:.72rem;
+      color:#475569;
     }
 
-    main{max-width:1100px; margin:auto; padding:0 1rem 3rem}
-    section{margin-top:2.4rem}
-    .section-title{font-size:1.35rem; display:flex; align-items:center; gap:.6rem; margin-bottom:1rem; position:relative}
-    .section-title .dot{width:8px;height:8px;border-radius:50%; background:linear-gradient(90deg,var(--accent),var(--accent2))}
-    .section-title::after{
-      content:""; position:absolute; right:0; bottom:-8px; height:2px; width:120px;
-      background:linear-gradient(90deg,var(--accent),var(--accent2));
-      opacity:.25;
+    main{
+      max-width:1180px;
+      margin:auto;
+      padding:0 1rem 3.4rem;
+    }
+    section{margin-top:2.6rem;}
+    .section-title{
+      font-size:1.25rem;
+      display:flex;
+      align-items:center;
+      gap:.45rem;
+      margin-bottom:1rem;
+    }
+    .section-title .dot{
+      width:9px; height:9px; border-radius:999px;
+      background:linear-gradient(160deg, var(--accent), #f97316);
     }
 
-    .grid{display:grid; grid-template-columns: repeat(auto-fit, minmax(280px,1fr)); gap:1.1rem}
+    .grid{
+      display:grid;
+      grid-template-columns: repeat(auto-fit, minmax(270px,1fr));
+      gap:1rem;
+    }
     .card{
+      background:var(--surface);
       border:1px solid var(--stroke);
       border-radius:var(--radius);
-      background:linear-gradient(180deg, rgba(255,255,255,.025), rgba(255,255,255,.01));
-      padding:1rem 1.1rem 1.2rem;
-      transition: transform .35s ease, box-shadow .35s ease, border-color .35s ease;
-      will-change: transform;
+      padding:1rem 1.1rem 1.1rem;
+      transition:.25s;
     }
-    .card h3{margin:.2rem 0 .35rem; font-size:1.06rem}
-    .card p{color:var(--muted); font-size:.92rem}
     .card:hover{
-      transform: translateY(-4px);
-      border-color: rgba(139,92,246,.35);
-      box-shadow:0 16px 36px rgba(0,0,0,.35);
+      border-color:rgba(225,29,72,.25);
+      box-shadow:0 14px 30px rgba(15,23,42,.05);
+      transform:translateY(-2px);
     }
+    .card h3{margin:.1rem 0 .4rem; font-size:1.02rem;}
+    .card p{color:var(--muted); font-size:.9rem;}
     .example{
-      margin-top:.6rem; font-size:.86rem; border-radius:14px; padding:.8rem 1rem;
-      border:1px solid var(--stroke);
-      background:linear-gradient(90deg, rgba(139,92,246,.10), rgba(34,211,238,.10));
+      margin-top:.6rem;
+      background:var(--accent-soft);
+      border:1px solid rgba(225,29,72,.08);
+      border-radius:16px;
+      padding:.55rem .75rem .7rem;
+      font-size:.8rem;
+      color:#7f1d1d;
     }
 
-    /* تذييل */
-    .footer{
-      margin-top:3rem; text-align:center; border:1px solid var(--stroke);
-      border-radius:16px; padding:1.1rem 1.4rem 1.5rem;
-      background:linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,.01));
-      font-size:.92rem;
+    .two-col{
+      display:grid;
+      grid-template-columns:1.1fr .9fr;
+      gap:1rem;
     }
-    .footer div{margin:.2rem 0}
-    .muted{color:var(--muted); font-size:.85rem}
+    @media(max-width:900px){
+      .hero{grid-template-columns:1fr;}
+      .two-col{grid-template-columns:1fr;}
+    }
 
-    /* الحركات المنظَّمة */
-    .reveal{opacity:0; transform:translateY(16px)}
-    .reveal.in{
+    /* الحركات: افتراضياً كل شيء ظاهر */
+    .reveal{opacity:1; transform:none;}
+    /* إذا اشتغل JS */
+    body.js .reveal{opacity:0; transform:translateY(16px);}
+    body.js .reveal.in{
       opacity:1; transform:none;
-      transition:
-        opacity .7s ease var(--d,0ms),
-        transform .7s cubic-bezier(.21,.8,.23,1) var(--d,0ms);
-    }
-    .float{animation:float 6s ease-in-out infinite}
-    @keyframes float{
-      0%,100%{transform:translateY(0)}
-      50%{transform:translateY(-6px)}
+      transition:opacity .6s ease var(--d,0ms), transform .6s ease var(--d,0ms);
     }
 
-    /* احترام تفضيل تقليل الحركة */
-    @media (prefers-reduced-motion: reduce){
-      .reveal,.reveal.in,.float,.brand-dot{animation:none; transition:none}
+    .footer{
+      margin-top:3.1rem;
+      background:var(--surface);
+      border:1px solid rgba(15,23,42,.03);
+      border-radius:16px;
+      padding:1.15rem 1.2rem 1.4rem;
+      text-align:center;
+      line-height:1.5;
     }
+    .muted{color:var(--muted); font-size:.8rem}
 
-    @media (max-width: 830px){
-      .hero{grid-template-columns: 1fr}
-      .nav{display:none}
-    }
   </style>
 </head>
 <body>
@@ -148,14 +192,214 @@
       </div>
       <div class="nav">
         <a href="#whatis">ما هي؟</a>
-        <a href="#importance">الأهمية</a>
+        <a href="#why">الأهمية</a>
         <a href="#types">الأنواع</a>
         <a href="#uses">الاستخدامات</a>
+        <a href="#rules">إرشادات</a>
       </div>
     </nav>
   </header>
 
   <div class="hero">
     <div>
-      <span class="badge">تصميم جرافيكي • واجهات رقمية</span>
-      <h1 class="reveal">المساحة البيضاء
+      <span class="badge">تصميم جرافيكي • تجربة مستخدم</span>
+      <h1 class="reveal">المساحة البيضاء (White Space) في التصميم</h1>
+      <p class="lead reveal" style="--d:100ms">
+        المساحة البيضاء ليست حشوة فارغة، بل أداة تنظيم، وتركيز، وراحة. من خلالها نمنع الضوضاء البصرية، ونوجّه عين المشاهد للعنصر الأهم، ونظهر التصميم كأنه أغلى وأكثر احترافية.
+      </p>
+    </div>
+    <div class="hero-card reveal" style="--d:160ms">
+      <h2>مكوّنات هذا العرض</h2>
+      <p class="muted" style="margin-bottom:.5rem;">سنمرّ على المفهوم، الفوائد، الأنواع، الأمثلة، ثم الأخطاء.</p>
+      <div class="chip-row">
+        <span class="chip">تعريف + فكرة خاطئة</span>
+        <span class="chip">فوائد عملية</span>
+        <span class="chip">Macro / Micro</span>
+        <span class="chip">استخدامات متقدمة</span>
+        <span class="chip">أخطاء يجب تجنّبها</span>
+      </div>
+    </div>
+  </div>
+
+  <main>
+    <!-- الشريحة 1 -->
+    <section id="whatis">
+      <h2 class="section-title"><span class="dot"></span> الشريحة 1: ما هي المساحة البيضاء؟</h2>
+      <div class="two-col">
+        <div class="card reveal" style="--d:40ms">
+          <h3>تعريف مبسّط</h3>
+          <p>
+            هي المساحة الفارغة (وليست شرطًا أن تكون بيضاء اللون) المحيطة بالعناصر أو الموجودة بينها، مثل الفراغ بين الفقرات، وبين صورة ونص، أو حتى بين أقسام الصفحة.
+          </p>
+          <div class="example">
+            مثال: صفحة فيها عنوان كبير ثم فراغ واضح ثم فقرة → عين القارئ تلتقط العنوان أولًا بدون إزعاج.
+          </div>
+        </div>
+        <div class="card reveal" style="--d:120ms">
+          <h3>فكرة خاطئة شائعة</h3>
+          <p>
+            البعض يظن أن المساحة البيضاء تعني أن المصمم “لم يكمل الصفحة”. الحقيقة أنها عنصر تصميم متعمّد، مثله مثل الألوان والخطوط.
+          </p>
+          <p class="example">مثال: إعلانات Apple أو مواقع الشركات الكبيرة → عناصر قليلة، فراغ كثير، لكن الإحساس راقٍ.</p>
+        </div>
+      </div>
+      <div class="grid" style="margin-top:1rem;">
+        <div class="card reveal" style="--d:200ms">
+          <h3>لماذا لونها ليس مهمًا؟</h3>
+          <p>يمكن أن تكون بلون رمادي فاتح، أو حتى لون خلفية ملوّنة، المهم أنها منطقة خالية من عناصر مزاحمة.</p>
+        </div>
+        <div class="card reveal" style="--d:260ms">
+          <h3>وظيفتها الأساسية</h3>
+          <p>خلق إيقاع بصري: عنصر → فراغ → عنصر. هذا الإيقاع هو الذي يجعل العين تتحرك بارتياح.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- الشريحة 2 -->
+    <section id="why">
+      <h2 class="section-title"><span class="dot"></span> الشريحة 2: لماذا المساحة البيضاء مهمة؟</h2>
+      <div class="grid">
+        <div class="card reveal" style="--d:40ms">
+          <h3>1. تحسين القراءة والفهم</h3>
+          <p>الفقرات المتلاصقة ترهق القارئ. بإضافة هوامش ومسافات سطر جيدة، يمكن رفع الاستيعاب بنسبة كبيرة حسب دراسات الـ UX.</p>
+        </div>
+        <div class="card reveal" style="--d:100ms">
+          <h3>2. توجيه الانتباه</h3>
+          <p>العين تنجذب للشيء الوحيد المحاط بفراغ. لذلك نضع العنوان أو زر call-to-action داخل مساحة هواء نظيفة.</p>
+          <div class="example">مثال: زر “قدّم الآن” في صفحة تسجيل تخصص جامعي.</div>
+        </div>
+        <div class="card reveal" style="--d:160ms">
+          <h3>3. خلق تسلسل هرمي</h3>
+          <p>الفراغ بين الأقسام يقول للمستخدم: “هذا جزء جديد”. بدون هذا الفراغ، تبدو الصفحة كتلة نص واحدة مزعجة.</p>
+        </div>
+        <div class="card reveal" style="--d:220ms">
+          <h3>4. إظهار الاحترافية</h3>
+          <p>التصاميم الفاخرة تعتمد أسلوب “كل شيء يتنفس”. كثرة العناصر تعطي إحساس رخيص ومزدحم.</p>
+        </div>
+        <div class="card reveal" style="--d:280ms">
+          <h3>5. سهولة التفاعل</h3>
+          <p>المساحة حول الأزرار والحقول تمنع الضغط الخاطئ وتخلّي التجربة مريحة على الجوال.</p>
+        </div>
+        <div class="card reveal" style="--d:340ms">
+          <h3>6. تقليل العبء المعرفي</h3>
+          <p>كلما قلّت العناصر، قلّ عدد القرارات التي يحتاج المستخدم لاتّخاذها، وبالتالي يكمل الصفحة للنهاية.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- الشريحة 3 -->
+    <section id="types">
+      <h2 class="section-title"><span class="dot"></span> الشريحة 3: أنواع المساحة البيضاء</h2>
+      <div class="grid">
+        <div class="card reveal" style="--d:40ms">
+          <h3>1) المساحة البيضاء الكلية (Macro)</h3>
+          <p>
+            هي المساحات الكبيرة بين مناطق التصميم الرئيسية: بين الهيدر والمحتوى، بين البطاقة والأخرى، بين أقسام الصفحة.
+          </p>
+          <div class="example">تُستخدم في الصفحات الطويلة لخلق “مقاطع” سهلة القراءة.</div>
+        </div>
+        <div class="card reveal" style="--d:120ms">
+          <h3>2) المساحة البيضاء الدقيقة (Micro)</h3>
+          <p>هي المسافات الصغيرة جداً: بين السطر والسطر، بين الأيقونة والنص، بين عنوان وفقرة.</p>
+          <div class="example">تظهر أهميتها في تصميم تطبيقات الجوال والبطاقات الصغيرة.</div>
+        </div>
+        <div class="card reveal" style="--d:200ms">
+          <h3>مساحة خارجية vs داخلية</h3>
+          <p>
+            الخارجية: حول العنصر من الخارج.  
+            الداخلية: داخل العنصر نفسه كالمسافة داخل البطاقة.
+          </p>
+        </div>
+        <div class="card reveal" style="--d:260ms">
+          <h3>توزيع متوازن</h3>
+          <p>المشكلة ليست في “كمية” الفراغ فقط، بل في انتظامه. الفراغ غير المنتظم يجعل التصميم فوضوي.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- الشريحة 4 -->
+    <section id="uses">
+      <h2 class="section-title"><span class="dot"></span> الشريحة 4: استخدامات عملية للمساحة البيضاء</h2>
+      <div class="grid">
+        <div class="card reveal" style="--d:40ms">
+          <h3>1. تصميم الويب</h3>
+          <p>لفصل أقسام “الخدمات – الأعمال – تواصل معنا” بدل ما تكون كلها فوق بعض.</p>
+        </div>
+        <div class="card reveal" style="--d:100ms">
+          <h3>2. المتاجر الإلكترونية</h3>
+          <p>إبراز المنتج الرئيسي، وسعره، وزر الشراء. فراغ حول المنتج = تركيز أعلى.</p>
+        </div>
+        <div class="card reveal" style="--d:160ms">
+          <h3>3. تصميم الهوية</h3>
+          <p>الشعارات القوية غالبًا حولها فراغ محسوب، عشان ما يتعارض أي عنصر مع شكل الشعار.</p>
+        </div>
+        <div class="card reveal" style="--d:220ms">
+          <h3>4. البوستات التعليمية</h3>
+          <p>بدل ما تحط 6 جمل في مربع واحد، وزّعها على كتل مع فراغ، فيصير المحتوى مقروء.</p>
+        </div>
+        <div class="card reveal" style="--d:280ms">
+          <h3>5. البريد الإلكتروني</h3>
+          <p>لجعل زر الـ CTA واضحًا، وخاصة في الرسائل التسويقية أو رسائل الجامعات.</p>
+        </div>
+        <div class="card reveal" style="--d:340ms">
+          <h3>6. الـ UI/UX</h3>
+          <p>الفراغ عنصر من عناصر الـ spacing system (مثل 4px, 8px, 12px...) داخل التصميم.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- الشريحة 5: إرشادات وأخطاء -->
+    <section id="rules">
+      <h2 class="section-title"><span class="dot"></span> الشريحة 5: إرشادات وأخطاء شائعة</h2>
+      <div class="grid">
+        <div class="card reveal" style="--d:40ms">
+          <h3>إرشادات سريعة</h3>
+          <ul style="margin:0; padding-right:1.2rem; color:var(--muted); font-size:.9rem;">
+            <li>استخدم نظام مسافات ثابت (8px أو 10px) ولا تغيّره كل مرة.</li>
+            <li>اترك مسافات أكبر حول العناوين الرئيسية من الفقرات العادية.</li>
+            <li>اترك مساحة حول العناصر القابلة للضغط على الجوال.</li>
+          </ul>
+        </div>
+        <div class="card reveal" style="--d:120ms">
+          <h3>أخطاء يجب تجنّبها</h3>
+          <p>
+            • ملء الصفحة بالكامل بعناصر  
+            • وضع عناصر كثيرة في نفس الصف  
+            • عدم ترك مسافة بين النص والحواف
+          </p>
+        </div>
+        <div class="card reveal" style="--d:200ms">
+          <h3>كيف أعرف أن الفراغ مناسب؟</h3>
+          <p>جرّب تشيل الفراغ في نسخة ثانية من التصميم. لو صار مزدحم وغير مريح → الفراغ كان مهم.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- المرجع + الأسماء -->
+    <section class="footer reveal" style="--d:40ms">
+      <div><strong>المرجع:</strong> كتاب "أساسيات التصميم الجرافيكي".</div>
+      <div><strong>اسم الدكتورة:</strong> إكرام</div>
+      <div><strong>اسم الطالبة:</strong> مريم بني عيسى</div>
+      <div><strong>التخصص:</strong> جرافيك ديزاين</div>
+      <div class="muted" style="margin-top:.5rem;">تم إعداد هذا العرض لتوضيح مفهوم المساحة البيضاء (White Space) في التصميم من الناحية النظرية والتطبيقية.</div>
+    </section>
+  </main>
+
+  <script>
+    // تفعيل الأنيميشن فقط لو الجافاسكربت شغّال
+    document.body.classList.add('js');
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{
+        if(e.isIntersecting){
+          e.target.classList.add('in');
+          io.unobserve(e.target);
+        }
+      });
+    },{threshold:.15});
+    document.querySelectorAll('.reveal').forEach((el,i)=>{
+      if(!el.style.getPropertyValue('--d')) el.style.setProperty('--d', (80*i)+'ms');
+      io.observe(el);
+    });
+  </script>
+</body>
+</html>
